@@ -1477,19 +1477,19 @@
                 role: "Owner NEURAL NEXUS TEAM",
                 bio: "Pemilik Neural Nexus Team dengan fokus pada strategi pengembangan bisnis dan teknologi.",
                 initials: "APS",
-                photo: "https://files.catbox.moe/oussd0.jpg",
+                photo: "https://files.catbox.moe/aqs5ws.jpg",
                 phone: "+62 812-9944-9537",
                 whatsappMessage: "Halo%20Ananda%20Putra,%20saya%20lihat%20profil%20Anda%20sebagai%20Owner%20Neural%20Nexus.%20Bisa%20berdiskusi%20tentang%20kolaborasi?"
             },
             {
                 id: 3,
-                name: "Fakhri Arya Dzaki",
+                name: "Adi",
                 role: "Backend & Frontend & Mobile Developer",
                 bio: "Pengembangan aplikasi adalah passion saya. Saat ini sedang fokus pada pengembangan aplikasi mobile dan web development.",
                 initials: "FAD",
-                photo: null,
-                phone: "+62 851-7121-1053",
-                whatsappMessage: "Halo%20Fakhri,%20saya%20lihat%20profil%20Anda%20di%20Neural%20Nexus.%20Bisa%20bertanya%20tentang%20pengembangan%20aplikasi%20mobile?"
+                photo: "https://files.catbox.moe/p41u71.jpg",
+                phone: "+62 831-6088-9820",
+                whatsappMessage: "Halo%20Adi,%20saya%20lihat%20profil%20Anda%20di%20Neural%20Nexus.%20Bisa%20bertanya%20tentang%20pengembangan%20aplikasi%20mobile?"
             },
             {
                 id: 4,
@@ -1497,7 +1497,7 @@
                 role: "Frontend & Backend Developer & Cybersecurity Engineer",
                 bio: "Frontend engineer yang mengutamakan kualitas tampilan dan pengalaman pengguna. Berpengalaman membangun UI web menggunakan teknologi frontend dan framework modern.",
                 initials: "SAT",
-                photo: null,
+                photo: "https://files.catbox.moe/dcga0w.jpg",
                 phone: "+62 851-7121-1053",
                 whatsappMessage: "Halo%20Satria,%20saya%20tertarik%20dengan%20keahlian%20Anda%20di%20bidang%20cybersecurity.%20Bisa%20berbagi%20pengalaman?"
             },
@@ -1507,7 +1507,7 @@
                 role: "Backend Developer",
                 bio: "Hanya manusia biasa yang berdamai dengan bug dan deadline.",
                 initials: "RG",
-                photo: null,
+                photo: "https://files.catbox.moe/da0f5p.jpg",
                 phone: "+62 838-3399-1621",
                 whatsappMessage: "Halo%20Rendy,%20saya%20lihat%20profil%20Anda%20sebagai%20Backend%20Developer.%20Bisa%20diskusi%20tentang%20pengembangan%20backend?"
             },
@@ -1517,7 +1517,7 @@
                 role: "Backend & Frontend Development",
                 bio: "Saya seorang pelajar yang berupa SMK Dan tertarik dengan BHS program dan algoritma.",
                 initials: "MBW",
-                photo: null,
+                photo: "https://files.catbox.moe/wkh4fo.jpg",
                 phone: "+62 821-4893-6674",
                 whatsappMessage: "Halo%20Barkah,%20saya%20juga%20pelajar%20yang%20tertarik%20dengan%20programming.%20Bisa%20berbagi%20pengalaman%20belajar?"
             },
@@ -1527,7 +1527,7 @@
                 role: "Frontend Development",
                 bio: "Pecinta coding dengan fokus pada pengembangan antarmuka yang user-friendly dan responsif.",
                 initials: "DA",
-                photo: null,
+                photo: "https://files.catbox.moe/1g7k3g.jpg",
                 phone: "+62 882-6035-1750",
                 whatsappMessage: "Halo%20Dian,%20saya%20tertarik%20dengan%20frontend%20development.%20Bisa%20bertanya%20tentang%20pengalaman%20Anda?"
             },
@@ -1537,9 +1537,29 @@
                 role: "Frontend Developer",
                 bio: "Pelajar yang memiliki minat besar dalam teknologi dan pengembangan aplikasi. Berusaha untuk meningkatkan keterampilan dan menjadi developer yang profesional.",
                 initials: "YR",
-                photo: null,
+                photo: "https://files.catbox.moe/jerbop.jpg",
                 phone: "+62 821-4893-6674",
                 whatsappMessage: "Halo%20Yoel,%20saya%20juga%20sedang%20belajar%20frontend%20development.%20Bisa%20berdiskusi%20tentang%20teknologi%20terbaru?"
+            },
+            {
+                id: 9,
+                name: "Aryo",
+                role: "Frontend Developer",
+                bio: "Frontend Developer yang berfokus pada pengembangan antarmuka web yang responsif, efisien, dan berorientasi pada pengalaman pengguna. Terus belajar mengikuti perkembangan teknologi.",
+                initials: "AR",
+                photo: null,
+                phone: "+62 887-4371-02804",
+                whatsappMessage: "Halo%20Aryo,%20saya%20tertarik%20dengan%20frontend%20development.%20Bisa%20berbagi%20tips%20pengembangan%20UI%20yang%20baik?"
+            },
+            {
+                id: 10,
+                name: "Adi",
+                role: "Frontend Developer",
+                bio: "Hanya seorang antusias teknologi yang terus belajar membangun aplikasi lebih baik dari hari kemarin. Fokus pada pengembangan aplikasi dan pengalaman pengguna.",
+                initials: "AD",
+                photo: null,
+                phone: "+62 823-3543-6100",
+                whatsappMessage: "Halo%20Adi,%20saya%20juga%20antusias%20dengan%20teknologi.%20Bisa%20berdiskusi%20tentang%20pengembangan%20aplikasi%20modern?"
             }
         ];
 
@@ -1804,6 +1824,18 @@
         document.addEventListener('DOMContentLoaded', () => {
             renderTeam();
             renderProjects();
+            
+            // Update stat jumlah anggota tim
+            const statNumber = document.querySelector('.stat-number');
+            if (statNumber && teamMembers.length > 0) {
+                statNumber.textContent = teamMembers.length + '+';
+            }
+            
+            // Update jumlah anggota di floating card
+            const detailValue = document.querySelector('.card-detail:nth-child(4) .detail-value');
+            if (detailValue) {
+                detailValue.textContent = teamMembers.length + ' Anggota';
+            }
             
             // Add animation on scroll
             const observerOptions = {
