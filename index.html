@@ -847,6 +847,46 @@
             color: var(--accent);
         }
 
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px);
+        }
+
+        .social-link.instagram {
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+        }
+
+        .social-link.tiktok {
+            background: #000000;
+            color: white;
+        }
+
+        .social-link.tiktok:hover {
+            background: #333333;
+        }
+
+        .social-link.whatsapp {
+            background: #25D366;
+        }
+
         .footer-bottom {
             text-align: center;
             padding-top: 30px;
@@ -1073,6 +1113,10 @@
                 width: 36px;
                 height: 36px;
             }
+            
+            .social-links {
+                justify-content: center;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1106,6 +1150,16 @@
             
             .team-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .social-links {
+                gap: 10px;
+            }
+            
+            .social-link {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
             }
         }
     </style>
@@ -1148,7 +1202,7 @@
                     
                     <div class="hero-stats">
                         <div class="stat-item">
-                            <span class="stat-number">14+</span>
+                            <span class="stat-number">15+</span>
                             <span class="stat-label">Anggota Tim</span>
                         </div>
                         <div class="stat-item">
@@ -1181,7 +1235,7 @@
                         
                         <div class="card-detail">
                             <div class="detail-label">Jumlah Anggota</div>
-                            <div class="detail-value">14 Anggota</div>
+                            <div class="detail-value">15 Anggota</div>
                         </div>
                         
                         <div class="card-detail">
@@ -1337,7 +1391,7 @@
                 
                 <div class="community-stats">
                     <div class="community-stat">
-                        <span class="number">14+</span>
+                        <span class="number">15+</span>
                         <span class="label">Anggota Aktif</span>
                     </div>
                     <div class="community-stat">
@@ -1370,9 +1424,18 @@
                         <i class="fas fa-brain"></i> NEURAL NEXUS
                     </a>
                     <p>Empowering the Future through Intelligent Code. Kami adalah komunitas pengembang yang berfokus pada solusi teknologi inovatif dengan kecerdasan buatan, pembelajaran mesin, dan pengembangan perangkat lunak mutakhir.</p>
-                    <button class="btn" id="joinCommunityBtn3" style="margin-top: 15px;">
-                        <i class="fab fa-whatsapp"></i> Gabung Komunitas WhatsApp
-                    </button>
+                    
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/neuralnexus.team?utm_source=qr&igsh=bWV1anl3M2VuMmg0" class="social-link instagram" target="_blank" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@neuralnexus.teamm?_r=1&_t=ZS-93Yu2nlk1jt" class="social-link tiktok" target="_blank" title="TikTok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="#" class="social-link whatsapp" id="joinCommunityBtn3" title="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
                 </div>
                 
                 <div class="footer-links">
@@ -1560,6 +1623,16 @@
                 photo: null,
                 phone: "+62 823-3543-6100",
                 whatsappMessage: "Halo%20Adi,%20saya%20juga%20antusias%20dengan%20teknologi.%20Bisa%20berdiskusi%20tentang%20pengembangan%20aplikasi%20modern?"
+            },
+            {
+                id: 11,
+                name: "Duta Rahmatullah",
+                role: "Backend Developer",
+                bio: "Tertarik dalam dunia pengembangan software dengan spesifik di bidang backend dan akan terus mempelajari segala sesuatu yang berkaitan dengan dunia teknologi.",
+                initials: "DR",
+                photo: "https://files.catbox.moe/9kxgl9.jpg",
+                phone: "+62 895-3230-51859",
+                whatsappMessage: "Halo%20Duta%20Rahmatullah,%20saya%20lihat%20profil%20Anda%20sebagai%20Backend%20Developer%20di%20Neural%20Nexus.%20Bisa%20diskusi%20tentang%20backend%20development?"
             }
         ];
 
@@ -1825,17 +1898,19 @@
             renderTeam();
             renderProjects();
             
-            // Update stat jumlah anggota tim
-            const statNumber = document.querySelector('.stat-number');
-            if (statNumber && teamMembers.length > 0) {
-                statNumber.textContent = teamMembers.length + '+';
-            }
+            // Update stat jumlah anggota tim menjadi 15+ (karena total 11 anggota)
+            const statNumbers = document.querySelectorAll('.stat-number');
+            statNumbers[0].textContent = teamMembers.length + '+';
             
             // Update jumlah anggota di floating card
             const detailValue = document.querySelector('.card-detail:nth-child(4) .detail-value');
             if (detailValue) {
                 detailValue.textContent = teamMembers.length + ' Anggota';
             }
+            
+            // Update jumlah anggota di komunitas section
+            const communityNumbers = document.querySelectorAll('.community-stat .number');
+            communityNumbers[0].textContent = teamMembers.length + '+';
             
             // Add animation on scroll
             const observerOptions = {
