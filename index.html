@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEURAL NEXUS - Empowering the Future through Intelligent Code</title>
     <!-- Google Site Verification -->
-    
+    <meta name="google-site-verification" content="zSSNBq4FFnkPm2z-XDPVizWIGil2mM_FYI6UUfs1NPg" />
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -178,6 +178,263 @@
             font-size: 1.5rem;
             cursor: pointer;
             color: var(--accent);
+        }
+
+        /* AI Chatbot Styles */
+        .chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .chatbot-toggle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0, 217, 255, 0.4);
+            transition: var(--transition);
+            border: 3px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(0, 217, 255, 0.6);
+        }
+
+        .chatbot-toggle.active {
+            background: var(--accent-dark);
+            transform: rotate(90deg);
+        }
+
+        .chatbot-window {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 350px;
+            height: 500px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), var(--neon-glow);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .chatbot-window.active {
+            display: flex;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chatbot-header {
+            background: rgba(0, 217, 255, 0.1);
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 1px solid rgba(0, 217, 255, 0.2);
+        }
+
+        .chatbot-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .chatbot-header-info h3 {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-bottom: 3px;
+        }
+
+        .chatbot-header-info p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .chatbot-status {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #00ff00;
+            margin-left: auto;
+            box-shadow: 0 0 8px #00ff00;
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .chatbot-message {
+            max-width: 80%;
+            padding: 12px 15px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chatbot-message.bot {
+            background: rgba(0, 217, 255, 0.15);
+            border-bottom-left-radius: 5px;
+            align-self: flex-start;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            color: var(--text);
+        }
+
+        .chatbot-message.user {
+            background: rgba(255, 255, 255, 0.1);
+            border-bottom-right-radius: 5px;
+            align-self: flex-end;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .chatbot-input-area {
+            padding: 15px;
+            border-top: 1px solid rgba(0, 217, 255, 0.2);
+            display: flex;
+            gap: 10px;
+            background: rgba(10, 14, 23, 0.7);
+        }
+
+        .chatbot-input {
+            flex: 1;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            border-radius: 25px;
+            color: var(--text);
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .chatbot-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
+        }
+
+        .chatbot-send-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            border: none;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .chatbot-send-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .chatbot-typing {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 10px 15px;
+            background: rgba(0, 217, 255, 0.1);
+            border-radius: 15px;
+            align-self: flex-start;
+            max-width: 80%;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+        }
+
+        .chatbot-typing span {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            animation: typing 1.4s infinite ease-in-out;
+        }
+
+        .chatbot-typing span:nth-child(1) {
+            animation-delay: -0.32s;
+        }
+
+        .chatbot-typing span:nth-child(2) {
+            animation-delay: -0.16s;
+        }
+
+        @keyframes typing {
+            0%, 80%, 100% {
+                transform: scale(0.8);
+                opacity: 0.5;
+            }
+            40% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .chatbot-quick-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .chatbot-quick-btn {
+            padding: 6px 12px;
+            background: rgba(0, 217, 255, 0.1);
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            border-radius: 15px;
+            color: var(--accent);
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .chatbot-quick-btn:hover {
+            background: rgba(0, 217, 255, 0.2);
+            transform: translateY(-2px);
         }
 
         /* Hero Section */
@@ -1101,6 +1358,11 @@
             .team-grid {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             }
+            
+            .chatbot-window {
+                width: 300px;
+                height: 450px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1183,6 +1445,17 @@
                 width: 130px;
                 height: 130px;
             }
+            
+            .chatbot-container {
+                bottom: 10px;
+                right: 10px;
+            }
+            
+            .chatbot-window {
+                width: 280px;
+                height: 400px;
+                right: -10px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1232,6 +1505,11 @@
                 width: 120px;
                 height: 120px;
             }
+            
+            .chatbot-window {
+                width: 260px;
+                height: 380px;
+            }
         }
     </style>
 </head>
@@ -1260,6 +1538,37 @@
             </nav>
         </div>
     </header>
+
+    <!-- AI Chatbot Nexus -->
+    <div class="chatbot-container">
+        <div class="chatbot-toggle" id="chatbotToggle">
+            <i class="fas fa-robot"></i>
+        </div>
+        
+        <div class="chatbot-window" id="chatbotWindow">
+            <div class="chatbot-header">
+                <div class="chatbot-avatar">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <div class="chatbot-header-info">
+                    <h3>Nexus AI Assistant</h3>
+                    <p>Neural Nexus Official AI</p>
+                </div>
+                <div class="chatbot-status"></div>
+            </div>
+            
+            <div class="chatbot-messages" id="chatbotMessages">
+                <!-- Messages will be added here by JavaScript -->
+            </div>
+            
+            <div class="chatbot-input-area">
+                <input type="text" class="chatbot-input" id="chatbotInput" placeholder="Tanya apapun kepada Nexus AI..." autocomplete="off">
+                <button class="chatbot-send-btn" id="chatbotSendBtn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
@@ -1596,7 +1905,7 @@
     </div>
 
     <script>
-        // Data Tim dengan foto - PERUBAHAN UTAMA DISINI
+        // Data Tim dengan foto - TAMBAHKAN AFANDI DISINI
         const teamMembers = [
             {
                 id: 1,
@@ -1686,7 +1995,7 @@
                 role: "Frontend Developer",
                 bio: "Frontend Developer yang berfokus pada pengembangan antarmuka web yang responsif, efisien, dan berorientasi pada pengalaman pengguna. Terus belajar mengikuti perkembangan teknologi.",
                 initials: "AR",
-                photo: null,
+                photo: "https://files.catbox.moe/dd1fk4.jpg",
                 phone: "+62 887-4371-02804",
                 whatsappMessage: "Halo%20Aryo,%20saya%20tertarik%20dengan%20frontend%20development.%20Bisa%20berbagi%20tips%20pengembangan%20UI%20yang%20baik?"
             },
@@ -1696,7 +2005,7 @@
                 role: "Frontend Developer",
                 bio: "Hanya seorang antusias teknologi yang terus belajar membangun aplikasi lebih baik dari hari kemarin. Fokus pada pengembangan aplikasi dan pengalaman pengguna.",
                 initials: "AD",
-                photo: null,
+                photo: "https://files.catbox.moe/p41u71.jpg",
                 phone: "+62 823-3543-6100",
                 whatsappMessage: "Halo%20Adi,%20saya%20juga%20antusias%20dengan%20teknologi.%20Bisa%20berdiskusi%20tentang%20pengembangan%20aplikasi%20modern?"
             },
@@ -1709,6 +2018,16 @@
                 photo: "https://files.catbox.moe/9kxgl9.jpg",
                 phone: "+62 895-3230-51859",
                 whatsappMessage: "Halo%20Duta%20Rahmatullah,%20saya%20lihat%20profil%20Anda%20sebagai%20Backend%20Developer%20di%20Neural%20Nexus.%20Bisa%20diskusi%20tentang%20backend%20development?"
+            },
+            {
+                id: 12,
+                name: "Afandi",
+                role: "Backend Frontend Developer",
+                bio: "Saya Backend & Frontend Developer yang bermain di balik layar dan di depan layar—membangun sistem kuat dengan tampilan yang clean dan modern.",
+                initials: "AF",
+                photo: "https://files.catbox.moe/dtywba.jpg",
+                phone: "+62 851-4313-7448",
+                whatsappMessage: "Halo%20Afandi,%20saya%20lihat%20profil%20Anda%20sebagai%20Backend%20Frontend%20Developer%20di%20Neural%20Nexus.%20Bisa%20berdiskusi%20tentang%20pengembangan%20fullstack?"
             }
         ];
 
@@ -1790,6 +2109,205 @@
         const modal = document.getElementById('adminApprovalModal');
         const closeModal = document.getElementById('closeModal');
         const cancelModal = document.getElementById('cancelModal');
+        
+        // AI Chatbot Elements
+        const chatbotToggle = document.getElementById('chatbotToggle');
+        const chatbotWindow = document.getElementById('chatbotWindow');
+        const chatbotMessages = document.getElementById('chatbotMessages');
+        const chatbotInput = document.getElementById('chatbotInput');
+        const chatbotSendBtn = document.getElementById('chatbotSendBtn');
+
+        // AI Nexus Chatbot Logic
+        class NexusAI {
+            constructor() {
+                this.conversationHistory = [];
+                this.isTyping = false;
+                this.initializeChatbot();
+            }
+            
+            initializeChatbot() {
+                this.addBotMessage("Halo! Saya **Nexus AI**, asisten kecerdasan buatan Neural Nexus. 👋 Saya di sini untuk membantu menjawab pertanyaan Anda tentang komunitas kami, proyek, tim, atau apapun yang ingin Anda tanyakan!");
+                this.addBotMessage("Silakan tanyakan apapun kepada saya! Misalnya:\n• Apa itu Neural Nexus?\n• Siapa pendiri Neural Nexus?\n• Bagaimana cara bergabung dengan komunitas?\n• Teknologi apa yang digunakan Neural Nexus?\n• Atau tanyakan hal lain yang ingin Anda ketahui!");
+            }
+            
+            addUserMessage(message) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'chatbot-message user';
+                messageDiv.textContent = message;
+                chatbotMessages.appendChild(messageDiv);
+                this.conversationHistory.push({ role: 'user', content: message });
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            }
+            
+            addBotMessage(message) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'chatbot-message bot';
+                
+                // Format pesan dengan line breaks
+                const formattedMessage = message.replace(/\n/g, '<br>');
+                messageDiv.innerHTML = formattedMessage;
+                
+                chatbotMessages.appendChild(messageDiv);
+                this.conversationHistory.push({ role: 'bot', content: message });
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            }
+            
+            showTypingIndicator() {
+                if (this.isTyping) return;
+                
+                this.isTyping = true;
+                const typingDiv = document.createElement('div');
+                typingDiv.className = 'chatbot-typing';
+                typingDiv.id = 'typingIndicator';
+                typingDiv.innerHTML = `
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                `;
+                chatbotMessages.appendChild(typingDiv);
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            }
+            
+            hideTypingIndicator() {
+                this.isTyping = false;
+                const typingIndicator = document.getElementById('typingIndicator');
+                if (typingIndicator) {
+                    typingIndicator.remove();
+                }
+            }
+            
+            generateResponse(userMessage) {
+                const lowerMessage = userMessage.toLowerCase().trim();
+                
+                // Tanggapan untuk berbagai jenis pertanyaan
+                if (lowerMessage.includes('halo') || lowerMessage.includes('hai') || lowerMessage.includes('hi')) {
+                    return "Halo! 👋 Senang bisa berbicara dengan Anda. Ada yang bisa saya bantu terkait Neural Nexus?";
+                }
+                
+                if (lowerMessage.includes('apa itu neural nexus') || lowerMessage.includes('apa neural nexus')) {
+                    return "**Neural Nexus** adalah komunitas pengembang teknologi yang berfokus pada solusi inovatif menggunakan kecerdasan buatan, machine learning, dan pengembangan perangkat lunak modern. Kami bertujuan untuk memberdayakan masa depan melalui kode yang cerdas dan efisien.\n\nVisi kami adalah menciptakan teknologi yang dapat diakses, efisien, dan memberikan dampak positif bagi masyarakat.";
+                }
+                
+                if (lowerMessage.includes('siapa pendiri') || lowerMessage.includes('founder')) {
+                    return "**Pendiri Neural Nexus** adalah **GarzZOfficial (Tegar Pratama)**. Beliau memiliki passion di bidang AI, machine learning, dan pengembangan sistem cerdas dengan visi untuk menciptakan solusi teknologi inovatif yang berdampak luas.";
+                }
+                
+                if (lowerMessage.includes('owner') || lowerMessage.includes('pemilik')) {
+                    return "**Owner Neural Nexus** adalah **Ananda Putra S.**. Beliau fokus pada strategi pengembangan bisnis dan teknologi, serta berkomitmen untuk mengembangkan komunitas pengembang yang kolaboratif dan inovatif.";
+                }
+                
+                if (lowerMessage.includes('cara bergabung') || lowerMessage.includes('join') || lowerMessage.includes('gabung')) {
+                    return "Untuk bergabung dengan komunitas Neural Nexus:\n1. **Hubungi admin** melalui WhatsApp (Pendiri atau Owner)\n2. **Perkenalkan diri** Anda dan sampaikan minat untuk bergabung\n3. **Tunggu konfirmasi** dari admin\n4. Setelah disetujui, Anda akan menerima **link undangan privat** ke grup WhatsApp\n\nAnda bisa menghubungi:\n• Pendiri: +62 895-4021-28077\n• Owner: +62 812-9944-9537";
+                }
+                
+                if (lowerMessage.includes('teknologi') || lowerMessage.includes('technology') || lowerMessage.includes('tekno')) {
+                    return "**Teknologi yang kami gunakan di Neural Nexus:**\n\n🤖 **AI & Machine Learning:**\n• TensorFlow, PyTorch, Scikit-learn\n• Computer Vision, NLP\n\n🌐 **Web Development:**\n• React, Vue.js, Angular\n• Node.js, Express, Django\n• MongoDB, PostgreSQL\n\n📱 **Mobile Development:**\n• React Native, Flutter\n• Android (Kotlin/Java), iOS (Swift)\n\n🔧 **Lainnya:**\n• IoT, Cloud Computing (AWS, GCP)\n• Cybersecurity, DevOps\n• API Development, Microservices";
+                }
+                
+                if (lowerMessage.includes('proyek') || lowerMessage.includes('project')) {
+                    return "**Beberapa proyek yang dikembangkan Neural Nexus:**\n\n1. **AI Healthcare Assistant** - Asisten kesehatan berbasis AI\n2. **Smart Home Dashboard** - Kontrol perangkat IoT\n3. **E-Learning Platform** - Platform pembelajaran online\n4. **Autonomous Drone Navigation** - Navigasi drone otonom\n5. **Mobile Banking App** - Aplikasi perbankan mobile\n6. **Predictive Maintenance System** - Prediksi kerusakan mesin\n7. **E-Commerce Platform** - Platform e-commerce dengan AI\n8. **Fitness Tracking App** - Aplikasi pelacak kebugaran dengan AI coach\n\nSemua proyek kami fokus pada inovasi dan memberikan solusi yang berdampak positif.";
+                }
+                
+                if (lowerMessage.includes('anggota') || lowerMessage.includes('tim') || lowerMessage.includes('team')) {
+                    return "**Tim Neural Nexus** terdiri dari **12+ anggota** dengan berbagai spesialisasi:\n\n👑 **Pendiri:** GarzZOfficial (Tegar Pratama)\n👔 **Owner:** Ananda Putra S.\n👨‍💻 **Anggota:**\n• Fakhri Arya dzaki (Fullstack & Mobile Dev)\n• Satria (Frontend & Cybersecurity)\n• Rendy Gunawan (Backend Dev)\n• Muhammad pirdiyansah (Fullstack Dev)\n• Dian Adigua (Frontend Dev)\n• Yoel Rafael (Frontend Dev)\n• Aryo (Frontend Dev)\n• Adi (Frontend Dev)\n• Duta Rahmatullah (Backend Dev)\n• **Afandi** (Backend Frontend Developer)\n\nTim kami terdiri dari pengembang dengan berbagai latar belakang dan keahlian yang saling melengkapi.";
+                }
+                
+                if (lowerMessage.includes('afandi') || lowerMessage.includes('backend frontend')) {
+                    return "**Afandi** adalah **Backend Frontend Developer** di Neural Nexus. Spesialisasinya:\n\n🎯 **Keahlian:**\n• Backend Development (sistem yang kuat dan scalable)\n• Frontend Development (tampilan clean dan modern)\n• Fullstack Development (end-to-end solutions)\n\n💡 **Filosofi Kerja:**\n\"Saya Backend & Frontend Developer yang bermain di balik layar dan di depan layar—membangun sistem kuat dengan tampilan yang clean dan modern.\"\n\n📱 **Kontak Afandi:**\n• WhatsApp: +62 851-4313-7448\n\nAfandi adalah salah satu anggota yang ahli dalam mengintegrasikan backend yang kuat dengan frontend yang user-friendly!";
+                }
+                
+                if (lowerMessage.includes('komunitas') || lowerMessage.includes('community')) {
+                    return "**Komunitas Neural Nexus** adalah tempat bagi pengembang untuk:\n\n• **Berbagi pengetahuan** tentang teknologi terkini\n• **Berkolaborasi** dalam proyek open source\n• **Belajar bersama** melalui workshop dan sesi diskusi\n• **Networking** dengan pengembang lainnya\n\n**Fitur komunitas kami:**\n• Grup WhatsApp aktif dengan 12+ anggota\n• Diskusi teknis mingguan\n• Kolaborasi proyek terbuka\n• Sesi belajar dan code review\n\nBergabunglah dengan komunitas kami untuk berkembang bersama! 🚀";
+                }
+                
+                if (lowerMessage.includes('kontak') || lowerMessage.includes('contact') || lowerMessage.includes('hubungi')) {
+                    return "**Kontak Neural Nexus:**\n\n📱 **WhatsApp:**\n• Pendiri: +62 895-4021-28077\n• Owner: +62 812-9944-9537\n\n📧 **Email:** neural.nexus.team@gmail.com\n\n🌐 **Social Media:**\n• Instagram: @neuralnexus.team\n• TikTok: @neuralnexus.teamm\n\n💬 **AI Assistant:** Saya, Nexus AI, siap membantu 24/7!\n\nJangan ragu untuk menghubungi kami untuk bertanya, berkolaborasi, atau sekadar menyapa! 😊";
+                }
+                
+                if (lowerMessage.includes('terima kasih') || lowerMessage.includes('thanks') || lowerMessage.includes('makasih')) {
+                    return "Sama-sama! 😊 Senang bisa membantu Anda. Jika ada pertanyaan lain tentang Neural Nexus, jangan ragu untuk bertanya. Kami selalu siap membantu!";
+                }
+                
+                if (lowerMessage.includes('bye') || lowerMessage.includes('selamat tinggal') || lowerMessage.includes('dadah')) {
+                    return "Sampai jumpa! 👋 Terima kasih telah mengunjungi Neural Nexus. Jika Anda membutuhkan bantuan lagi, jangan ragu untuk menghubungi saya. Semoga harimu menyenangkan!";
+                }
+                
+                if (lowerMessage.includes('nexus') || lowerMessage.includes('ai nexus')) {
+                    return "Ya, saya adalah **Nexus AI** - asisten kecerdasan buatan resmi Neural Nexus! 🤖\n\nSaya dirancang untuk membantu menjawab pertanyaan tentang:\n• Profil dan informasi Neural Nexus\n• Anggota tim dan keahlian mereka\n• Proyek yang sedang dikembangkan\n• Cara bergabung dengan komunitas\n• Teknologi yang kami gunakan\n• Dan masih banyak lagi!\n\nAda yang bisa saya bantu?";
+                }
+                
+                // Default response untuk pertanyaan umum
+                if (lowerMessage.includes('?') || lowerMessage.length > 3) {
+                    const responses = [
+                        "Menarik sekali pertanyaannya! Neural Nexus memang fokus pada pengembangan teknologi AI dan software yang inovatif. Apakah ada aspek khusus dari Neural Nexus yang ingin Anda ketahui lebih detail?",
+                        "Pertanyaan yang bagus! Sebagai AI asisten Neural Nexus, saya bisa memberikan informasi tentang komunitas kami, proyek-proyek yang sedang berjalan, atau cara bergabung dengan tim kami. Ada yang spesifik yang ingin Anda tanyakan?",
+                        "Neural Nexus selalu terbuka untuk kolaborasi dan diskusi teknologi. Jika Anda tertarik dengan bidang AI, machine learning, atau pengembangan software, kami punya banyak hal menarik untuk dibagikan!",
+                        "Saya memahami pertanyaan Anda. Neural Nexus adalah komunitas yang dinamis dengan berbagai proyek teknologi. Mungkin Anda ingin tahu tentang spesialisasi tim kami atau teknologi yang sedang kami kembangkan?",
+                        "Sebagai AI dari Neural Nexus, saya dirancang untuk membantu memberikan informasi yang akurat tentang komunitas kami. Apakah Anda ingin mengetahui lebih banyak tentang salah satu proyek kami atau cara berkontribusi?",
+                        "Pertanyaan yang sangat relevan dengan fokus Neural Nexus! Kami selalu mengutamakan inovasi dan kolaborasi dalam setiap proyek. Ada topik tertentu yang ingin didiskusikan lebih lanjut?"
+                    ];
+                    
+                    return responses[Math.floor(Math.random() * responses.length)];
+                }
+                
+                // Tanggapan untuk pesan pendek atau salam
+                if (lowerMessage.length <= 3) {
+                    const greetings = [
+                        "Halo! 😊 Ada yang bisa saya bantu hari ini?",
+                        "Hi! 👋 Saya Nexus AI, siap membantu Anda!",
+                        "Hai! Ada pertanyaan tentang Neural Nexus?",
+                        "Hello! Neural Nexus di sini untuk membantu!"
+                    ];
+                    return greetings[Math.floor(Math.random() * greetings.length)];
+                }
+                
+                // Tanggapan default
+                return "Terima kasih atas pertanyaannya! 🤖 Sebagai Nexus AI dari Neural Nexus, saya di sini untuk membantu Anda memahami lebih banyak tentang komunitas kami yang fokus pada pengembangan teknologi AI dan software inovatif. Mungkin Anda ingin tahu tentang:\n\n• **Profil Neural Nexus** dan tim kami\n• **Proyek-proyek** yang sedang kami kerjakan\n• **Cara bergabung** dengan komunitas kami\n• **Teknologi** yang kami kuasai\n\nAtau ada topik spesifik lainnya yang ingin Anda ketahui?";
+            }
+            
+            async processUserMessage(message) {
+                this.addUserMessage(message);
+                this.showTypingIndicator();
+                
+                // Simulasi delay typing
+                setTimeout(() => {
+                    this.hideTypingIndicator();
+                    const response = this.generateResponse(message);
+                    this.addBotMessage(response);
+                }, 1000 + Math.random() * 1000);
+            }
+        }
+
+        // Initialize Nexus AI
+        const nexusAI = new NexusAI();
+
+        // Chatbot Event Listeners
+        chatbotToggle.addEventListener('click', () => {
+            chatbotToggle.classList.toggle('active');
+            chatbotWindow.classList.toggle('active');
+            
+            if (chatbotWindow.classList.contains('active')) {
+                chatbotInput.focus();
+            }
+        });
+
+        chatbotSendBtn.addEventListener('click', () => {
+            sendMessage();
+        });
+
+        chatbotInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        function sendMessage() {
+            const message = chatbotInput.value.trim();
+            if (message) {
+                nexusAI.processUserMessage(message);
+                chatbotInput.value = '';
+            }
+        }
 
         // Render team members dengan foto
         function renderTeam() {
@@ -1989,7 +2507,7 @@
             renderTeam();
             renderProjects();
             
-            // Update stat jumlah anggota tim menjadi 15+ (karena total 11 anggota)
+            // Update stat jumlah anggota tim menjadi 12+ (karena total 12 anggota)
             const statNumbers = document.querySelectorAll('.stat-number');
             statNumbers[0].textContent = teamMembers.length + '+';
             
